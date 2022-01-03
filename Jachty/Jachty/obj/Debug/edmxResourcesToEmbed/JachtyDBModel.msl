@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmagaModelStoreContainer" CdmEntityContainer="SmagaEntities">
+    <EntitySetMapping Name="Dane_Klientow">
+      <EntityTypeMapping TypeName="SmagaModel.Dane_Klientow">
+        <MappingFragment StoreEntitySet="Dane_Klientow">
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Numer_Tel" ColumnName="Numer_Tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jachties">
+      <EntityTypeMapping TypeName="SmagaModel.Jachty">
+        <MappingFragment StoreEntitySet="Jachty">
+          <ScalarProperty Name="id_jachtu" ColumnName="id_jachtu" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+          <ScalarProperty Name="Cena_Jedn" ColumnName="Cena_Jedn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SmagaModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezerwacje">
+      <EntityTypeMapping TypeName="SmagaModel.Rezerwacje">
+        <MappingFragment StoreEntitySet="Rezerwacje">
+          <ScalarProperty Name="Cena_Zaliczka" ColumnName="Cena_Zaliczka" />
+          <ScalarProperty Name="Cena_Total" ColumnName="Cena_Total" />
+          <ScalarProperty Name="Data_Koniec" ColumnName="Data_Koniec" />
+          <ScalarProperty Name="Data_Poczatek" ColumnName="Data_Poczatek" />
+          <ScalarProperty Name="id_jachtu" ColumnName="id_jachtu" />
+          <ScalarProperty Name="id_klienta" ColumnName="id_klienta" />
+          <ScalarProperty Name="id_rezerwacji" ColumnName="id_rezerwacji" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

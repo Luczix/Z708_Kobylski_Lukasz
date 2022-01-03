@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmagaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dane_Klientow">
+    <Key>
+      <PropertyRef Name="id_klienta" />
+    </Key>
+    <Property Name="id_klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Numer_Tel" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jachty">
+    <Key>
+      <PropertyRef Name="id_jachtu" />
+    </Key>
+    <Property Name="id_jachtu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Rodzaj" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Cena_Jedn" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rezerwacje">
+    <Key>
+      <PropertyRef Name="id_rezerwacji" />
+    </Key>
+    <Property Name="id_rezerwacji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_klienta" Type="int" />
+    <Property Name="id_jachtu" Type="int" />
+    <Property Name="Data_Poczatek" Type="date" />
+    <Property Name="Data_Koniec" Type="date" />
+    <Property Name="Cena_Total" Type="int" />
+    <Property Name="Cena_Zaliczka" Type="int" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Rezerwacj__id_ja__619B8048">
+    <End Role="Jachty" Type="Self.Jachty" Multiplicity="0..1" />
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jachty">
+        <PropertyRef Name="id_jachtu" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="id_jachtu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__id_kl__60A75C0F">
+    <End Role="Dane_Klientow" Type="Self.Dane_Klientow" Multiplicity="0..1" />
+    <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dane_Klientow">
+        <PropertyRef Name="id_klienta" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="id_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SmagaModelStoreContainer">
+    <EntitySet Name="Dane_Klientow" EntityType="Self.Dane_Klientow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jachty" EntityType="Self.Jachty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Rezerwacj__id_ja__619B8048" Association="Self.FK__Rezerwacj__id_ja__619B8048">
+      <End Role="Jachty" EntitySet="Jachty" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__id_kl__60A75C0F" Association="Self.FK__Rezerwacj__id_kl__60A75C0F">
+      <End Role="Dane_Klientow" EntitySet="Dane_Klientow" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

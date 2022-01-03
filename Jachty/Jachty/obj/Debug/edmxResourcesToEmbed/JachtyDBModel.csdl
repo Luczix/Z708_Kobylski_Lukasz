@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmagaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Dane_Klientow">
+    <Key>
+      <PropertyRef Name="id_klienta" />
+    </Key>
+    <Property Name="id_klienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Numer_Tel" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Rezerwacje" Relationship="SmagaModel.FK__Rezerwacj__id_kl__60A75C0F" FromRole="Dane_Klientow" ToRole="Rezerwacje" />
+  </EntityType>
+  <EntityType Name="Jachty">
+    <Key>
+      <PropertyRef Name="id_jachtu" />
+    </Key>
+    <Property Name="id_jachtu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rodzaj" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena_Jedn" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rezerwacje" Relationship="SmagaModel.FK__Rezerwacj__id_ja__619B8048" FromRole="Jachty" ToRole="Rezerwacje" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="SmagaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dane_Klientow" EntityType="Self.Dane_Klientow" />
+    <EntitySet Name="Jachties" EntityType="Self.Jachty" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Rezerwacje" EntityType="SmagaModel.Rezerwacje" />
+    <AssociationSet Name="FK__Rezerwacj__id_kl__60A75C0F" Association="SmagaModel.FK__Rezerwacj__id_kl__60A75C0F">
+      <End Role="Dane_Klientow" EntitySet="Dane_Klientow" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__id_ja__619B8048" Association="SmagaModel.FK__Rezerwacj__id_ja__619B8048">
+      <End Role="Jachty" EntitySet="Jachties" />
+      <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Rezerwacje">
+    <Key>
+      <PropertyRef Name="id_rezerwacji" />
+    </Key>
+    <Property Name="id_rezerwacji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_klienta" Type="Int32" />
+    <Property Name="id_jachtu" Type="Int32" />
+    <Property Name="Data_Poczatek" Type="DateTime" Precision="0" />
+    <Property Name="Data_Koniec" Type="DateTime" Precision="0" />
+    <Property Name="Cena_Total" Type="Int32" />
+    <Property Name="Cena_Zaliczka" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Dane_Klientow" Relationship="SmagaModel.FK__Rezerwacj__id_kl__60A75C0F" FromRole="Rezerwacje" ToRole="Dane_Klientow" />
+    <NavigationProperty Name="Jachty" Relationship="SmagaModel.FK__Rezerwacj__id_ja__619B8048" FromRole="Rezerwacje" ToRole="Jachty" />
+  </EntityType>
+  <Association Name="FK__Rezerwacj__id_kl__60A75C0F">
+    <End Type="SmagaModel.Dane_Klientow" Role="Dane_Klientow" Multiplicity="0..1" />
+    <End Type="SmagaModel.Rezerwacje" Role="Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dane_Klientow">
+        <PropertyRef Name="id_klienta" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="id_klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__id_ja__619B8048">
+    <End Type="SmagaModel.Jachty" Role="Jachty" Multiplicity="0..1" />
+    <End Type="SmagaModel.Rezerwacje" Role="Rezerwacje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jachty">
+        <PropertyRef Name="id_jachtu" />
+      </Principal>
+      <Dependent Role="Rezerwacje">
+        <PropertyRef Name="id_jachtu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
