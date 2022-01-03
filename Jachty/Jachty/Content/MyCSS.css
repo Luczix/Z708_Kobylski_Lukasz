@@ -1,0 +1,38 @@
+﻿.menu {
+    
+}
+
+body {
+    background-image: url('../../../../Graphics/sailboat2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffd800;
+}
+
+.menu li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li:hover {
+    background-color: #111;
+    text-decoration: none;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Jachty.Rezerwacje>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Poczatek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Koniec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena_Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena_Zaliczka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dane_Klientow.Imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jachty.Nazwa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Poczatek)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Koniec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena_Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena_Zaliczka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dane_Klientow.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jachty.Nazwa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_rezerwacji }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_rezerwacji }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_rezerwacji })
+        </td>
+    </tr>
+}
+
+</table>

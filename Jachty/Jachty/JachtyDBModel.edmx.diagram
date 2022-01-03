@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd54ae2d0ef842edb8b98ae2bc7087db" Name="Diagram1">
+        <EntityTypeShape EntityType="SmagaModel.Dane_Klientow" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmagaModel.Jachty" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmagaModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmagaModel.Rezerwacje" Width="1.5" PointX="6.125" PointY="0.75" />
+        <AssociationConnector Association="SmagaModel.FK__Rezerwacj__id_kl__60A75C0F" />
+        <AssociationConnector Association="SmagaModel.FK__Rezerwacj__id_ja__619B8048" />
+        <AssociationConnector Association="SmagaModel.FK__Rezerwacj__id_kl__60A75C0F" />
+        <AssociationConnector Association="SmagaModel.FK__Rezerwacj__id_ja__619B8048" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

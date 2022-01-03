@@ -1,0 +1,67 @@
+﻿@model Jachty.Rezerwacje
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rezerwacje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Poczatek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Poczatek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Koniec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Koniec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena_Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena_Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena_Zaliczka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena_Zaliczka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dane_Klientow.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dane_Klientow.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jachty.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jachty.Nazwa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_rezerwacji }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
